@@ -50,9 +50,7 @@
                         @csrf
                         @method('DELETE')
                         @if(\Illuminate\Support\Facades\Auth::user()->hasAnyRole('Administrator'))
-                            <div class="pull-right">
-                                <button type="submit" class="btn btn-danger">Delete</button>
-                            </div>
+                            <button type="submit" class="btn btn-danger">Delete</button>
                         @endif
                     </form>
                 </td>
