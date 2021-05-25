@@ -31,16 +31,12 @@
         <tr>
             <th>No</th>
             <th>Name</th>
-            <th>Lon</th>
-            <th>Lat</th>
             <th width="280px">Action</th>
         </tr>
         @foreach ($routes as $route)
             <tr>
                 <td>{{ ++$i }}</td>
                 <td>{{ $route->name }}</td>
-                <td>{{ $route->transmission_id }}</td>
-                <td>{{ $route->parent_id }}</td>
 
                 <td>
                     <form action="{{ route('routes.destroy',$route->id) }}" method="POST">
