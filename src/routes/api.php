@@ -47,7 +47,16 @@ Route::middleware(['auth:api', 'roles:Administrator'])->put(
     ['uses' => 'App\Http\Controllers\API\TransmissionController@update', 'as' => 'transmissions.update']
 );
 
+// Api routes for poles
+Route::middleware(['auth:api', 'roles:Administrator'])->post(
+    '/poles/create',
+    ['uses' => 'App\Http\Controllers\API\PoleController@create', 'as' => 'poles.create']
+);
 Route::middleware(['auth:api', 'roles:Administrator'])->put(
     '/poles/update/{id}',
     ['uses' => 'App\Http\Controllers\API\PoleController@update', 'as' => 'poles.update']
+);
+Route::middleware(['auth:api', 'roles:Administrator'])->delete(
+    '/poles/delete/{id}',
+    ['uses' => 'App\Http\Controllers\API\PoleController@delete', 'as' => 'poles.delete']
 );
