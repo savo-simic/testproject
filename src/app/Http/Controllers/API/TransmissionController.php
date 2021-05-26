@@ -5,7 +5,6 @@ namespace App\Http\Controllers\API;
 use App\Models\Transmission;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class TransmissionController extends BaseController
 {

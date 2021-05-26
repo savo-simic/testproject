@@ -46,3 +46,8 @@ Route::middleware('api')->put(
     '/transmissions/update/{id}',
     ['uses' => 'App\Http\Controllers\API\TransmissionController@update', 'as' => 'transmissions.update']
 );
+
+Route::middleware('api')->put(
+    '/poles/update/{id}',
+    ['uses' => 'App\Http\Controllers\API\PoleController@update', 'as' => 'poles.update']
+);
