@@ -36,3 +36,8 @@ Route::middleware('api')->get(
     '/transmissions',
     ['uses' => 'App\Http\Controllers\API\TransmissionController@index', 'as' => 'transmissions']
 );
+
+Route::middleware('api')->put(
+    '/transmissions/update/{id}',
+    ['uses' => 'App\Http\Controllers\API\TransmissionController@update', 'as' => 'transmissions.update']
+);
