@@ -22,6 +22,25 @@ class TransmissionController extends BaseController
         return response(['data' => $data]);
     }
 
+    public function create(Request $request)
+    {
+
+        $user = \Auth::guard('api')->user();
+        if (!$user) {
+            return 'Not authenticated.';
+        }
+
+        $request->validate([
+            'name' => 'required',
+        ]);
+
+        $pole = Transmission::create([
+            'name' => $request->name,
+        ]);
+
+        return response(['Successfully created']);
+    }
+
     public function update(Request $request, $id)
     {
         $user = $request->user('api');
@@ -41,5 +60,23 @@ class TransmissionController extends BaseController
         $transmission->update($data);
 
         return response(['Successfully updated']);
+    }
+
+    public function delete($id)
+    {
+        $user = \Auth::guard('api')->user();
+        if (!$user) {
+            return 'Not authenticated.';
+        }
+
+        $transmission = Transmission::find($id);
+
+        if (!$transmission) {
+            return response(['Transmission not found']);
+        }
+
+        $transmission->delete();
+
+        return response(['Successfully deleted']);
     }
 }

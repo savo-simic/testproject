@@ -42,9 +42,18 @@ Route::middleware('api')->get(
     ['uses' => 'App\Http\Controllers\API\TransmissionController@index', 'as' => 'transmissions']
 );
 
+// Api foutes for transmissions
+Route::middleware(['auth:api', 'roles:Administrator'])->post(
+    '/transmissions/create',
+    ['uses' => 'App\Http\Controllers\API\TransmissionController@create', 'as' => 'transmissions.create']
+);
 Route::middleware(['auth:api', 'roles:Administrator'])->put(
     '/transmissions/update/{id}',
     ['uses' => 'App\Http\Controllers\API\TransmissionController@update', 'as' => 'transmissions.update']
+);
+Route::middleware(['auth:api', 'roles:Administrator'])->delete(
+    '/transmissions/delete/{id}',
+    ['uses' => 'App\Http\Controllers\API\TransmissionController@delete', 'as' => 'poles.delete']
 );
 
 // Api routes for poles
