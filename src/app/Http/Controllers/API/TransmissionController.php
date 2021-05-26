@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Models\Transmission;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TransmissionController extends BaseController
 {
@@ -24,7 +25,7 @@ class TransmissionController extends BaseController
 
     public function update(Request $request, $id)
     {
-        $user =  \Auth::user();
+        $user = $request->user('api');
         if (!$user) {
             return 'Not authenticated.';
         }
