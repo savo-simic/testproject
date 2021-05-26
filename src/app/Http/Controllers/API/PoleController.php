@@ -19,6 +19,7 @@ class PoleController extends BaseController
     public function update(Request $request, $id)
     {
         $user = $request->user('api');
+
         if (!$user) {
             return 'Not authenticated.';
         }

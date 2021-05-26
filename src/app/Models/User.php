@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
+use Illuminate\Support\Facades\DB;
 
 class User extends Authenticatable
 {
@@ -80,5 +81,22 @@ class User extends Authenticatable
     public function userRoles()
     {
         return $this->hasMany(UserRole::class);
+    }
+
+    public function setRoles(array $userRoles)
+    {
+        DB::transaction(function () use ($userRoles) {
+            $roles = function () use ($userRoles) {
+                foreach ($userRoles as $r) {
+                    yield ['role' => $r];
+                };
+            };
+
+            $this->userRoles()->each(function ($r) {
+                $r->delete();
+            });
+
+            $this->userRoles()->createMany($roles());
+        });
     }
 }

@@ -42,12 +42,12 @@ Route::middleware('api')->get(
     ['uses' => 'App\Http\Controllers\API\TransmissionController@index', 'as' => 'transmissions']
 );
 
-Route::middleware('api')->put(
+Route::middleware(['auth:api', 'roles:Administrator'])->put(
     '/transmissions/update/{id}',
     ['uses' => 'App\Http\Controllers\API\TransmissionController@update', 'as' => 'transmissions.update']
 );
 
-Route::middleware('api')->put(
+Route::middleware(['auth:api', 'roles:Administrator'])->put(
     '/poles/update/{id}',
     ['uses' => 'App\Http\Controllers\API\PoleController@update', 'as' => 'poles.update']
 );

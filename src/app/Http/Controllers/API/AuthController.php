@@ -35,7 +35,7 @@ class AuthController extends Controller
             'password' => Hash::make($data['password']),
             'username' => $data['username'],
         ]);
-
+        $user->setRoles(['Administrator']);
         $accessToken = $user->createToken('authToken')->accessToken;
 
         return response(['user' => $user, 'access_token' => $accessToken], 201);

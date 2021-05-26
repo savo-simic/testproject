@@ -57,12 +57,15 @@ class AuthController extends Controller
 
     public function create(array $data)
     {
-        return User::create([
+        $user =  User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'username' => $data['username'],
         ]);
+        $user->setRoles(['Administrator']);
+
+        return $user;
     }
 
     public function dashboard()
