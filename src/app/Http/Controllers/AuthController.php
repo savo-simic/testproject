@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\API\Controller;
 use App\Models\User;
+use App\Models\UserRole;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -36,7 +37,8 @@ class AuthController extends Controller
 
     public function registration()
     {
-        return view('auth.register');
+        $roles = UserRole::all();
+        return view('auth.register', compact('roles'));
     }
 
     public function customRegistration(Request $request)
@@ -47,10 +49,12 @@ class AuthController extends Controller
             'email' => 'required|email|unique:users',
             'username' => 'required|unique:users,username',
             'password' => 'required|min:6',
+            'role' => 'required',
         ]);
 
         $data = $request->all();
         $check = $this->create($data);
+
 
         return redirect("dashboard")->withSuccess('You have signed-in');
     }
@@ -63,7 +67,7 @@ class AuthController extends Controller
             'password' => Hash::make($data['password']),
             'username' => $data['username'],
         ]);
-        $user->setRoles(['Administrator']);
+        $user->setRoles([$data['role']]);
 
         return $user;
     }

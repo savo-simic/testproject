@@ -26,6 +26,15 @@
               <label for="password" class="form-label">{{ __('Password') }}</label>
               <input type="password" class="form-control" id="password" name="password">
             </div>
+            <div class="mb-3">
+                <strong>Role:</strong>
+                <select id="role" name="role" class="form-control">
+                    <option value="">--- Select Role ---</option>
+                        <option value="Administrator" >{{ 'Administrator'  }}</option>
+                        <option value="Registered" >{{ 'Registered' }}</option>
+                </select>
+
+              </div>
             <div class="text-end">
                 <button type="submit" class="btn btn-primary">{{ __('Save') }}</button>
             </div>
