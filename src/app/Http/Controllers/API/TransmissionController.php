@@ -37,6 +37,7 @@ class TransmissionController extends BaseController
         $data = $request->validate([
             'name' => ['required'],
         ]);
+
         $transmission->update($data);
 
         return response(['Successfully updated']);
