@@ -31,7 +31,7 @@ class AuthController extends Controller
                 ->withSuccess('Signed in');
         }
 
-//        return redirect("dashboard")->withSuccess('Login details are not valid');
+        return redirect("login")->withErrors('Login details are not valid');
     }
 
 
