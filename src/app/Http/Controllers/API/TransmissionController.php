@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Http\Resources\TransmissionResource;
 use App\Models\Transmission;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
@@ -60,6 +61,7 @@ class TransmissionController extends BaseController
         $transmission->update($data);
 
         return response(['Successfully updated']);
+//        return new TransmissionResource($transmission);
     }
 
     public function delete($id)
