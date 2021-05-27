@@ -73,7 +73,7 @@ Run command for read data from json file
 ```sh
 php artisan command:init-json
 ```
-###Run project
+### Run project
 
 In your browser navigate to: http://localhost:88/register
 
