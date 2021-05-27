@@ -7,6 +7,7 @@ These instructions will get you a copy of the project up and running on your loc
 ### Prerequisites
 
 Download and install [Docker](https://www.docker.com/get-started).
+Download and install [MySQL Workbench].
 Create database with credentials that matches .env file ie 
 ```sh
 DB_CONNECTION=mysql
